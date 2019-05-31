@@ -15,11 +15,22 @@ html {
     display: inline-block;
     height: 20px;
     width: 20px;
+    border-radius: 50px;
+    border: 1px black;
 }
 
-#container {
-    text-align: center;
+.plus {
+    color: green;
 }
+
+.minus {
+    color: crimson;
+}
+
+#rows {
+    margin-left: 25px;
+}
+
 
 .header {
     text-align: center;
