@@ -10,3 +10,9 @@ html {
     background-color: black;
     color: white;
 }
+
+table, td {
+    border: 10px solid white;
+    color: gray; 
+
+  }
