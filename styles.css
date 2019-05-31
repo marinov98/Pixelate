@@ -27,24 +27,43 @@ html {
 }
 
 .fill {
+    margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.fill button {
+    height: 30px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.fill button:link,
+.fill button:visited {
+    border: 1px aqua;
+    transition: 0.3s color;
+}
+
+.fill button:active,
+.fill button:hover {
+    background-color: aqua;
+    color: rgb(150, 150, 5);
 }
 
 .clear button {
     color: red;
+    transition: background 0.3s, color 0.3s;
+    border: 1px red;
+    width: 60px;
 }
 
 
 .clear button:link,
 .clear button:visited {
-    width: 50px;
-    color: red;
     border: 1px red;
-    transition: background 0.5s, color 0.5s;
+    transition: color 0.3s;
 }
 
 .clear button:active,
-clear button:hover {
+.clear button:hover {
     background-color: red;
     color: white;
 }
