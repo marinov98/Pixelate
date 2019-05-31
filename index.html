@@ -8,18 +8,13 @@
 </head>
 
 <body>
-    <table> 
-        <tr id="myRow"> 
-        <td>First cell</td>
-        </tr>
-    </table>
 
-    <div class="top-header">
+    <div class="top header">
         <h1>Pixelate</h1>
         <div class="btns" id="rows">
             <span>Rows:</span>
-            <button onclick="addRow()" id="addRow">+</button>
-            <button onclick="deleteRow()" id="deleteRow">-</button>
+            <button class="plus" onclick="addRow()" id="addRow">+</button>
+            <button class="minus" onclick="deleteRow()" id="deleteRow">-</button>
         </div>
         <div class="btns" id="cols">
             <span>Columns:</span>
@@ -38,6 +33,11 @@
                 <option value="grey">Grey</option>
             </select>
         </div>
+        <table class="header" align="center">
+            <tr id="myRow">
+                <td align="center">First cell</td>
+            </tr>
+        </table>
     </div>
     <div class="bottom header">
         <div class="fill">
