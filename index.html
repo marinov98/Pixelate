@@ -8,12 +8,14 @@
 </head>
 
 <body>
-    <div class="top-header">
+    <div class="top header">
         <h1>Pixelate</h1>
         <div class="btns" id="rows">
-            <span>Rows:</span>
-            <button>+</button>
-            <button>-</button>
+            <div id="container">
+                <span>Rows:</span>
+                <button>+</button>
+                <button>-</button>
+            </div>
         </div>
         <div class="btns" id="cols">
             <span>Columns:</span>
@@ -31,6 +33,15 @@
                 <option value="green">Green</option>
                 <option value="grey">Grey</option>
             </select>
+        </div>
+    </div>
+    <div class="bottom header">
+        <div class="fill">
+            <button>Fill All Cells</button>
+            <button>Fill Empty Cells</button>
+        </div>
+        <div class="clear">
+            <button>Clear Grid</button>
         </div>
     </div>
 </body>
