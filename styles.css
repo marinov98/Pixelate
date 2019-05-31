@@ -11,6 +11,15 @@ html {
     color: white;
 }
 
+/* #btns {
+    color: white; 
+    border: 1px solid white; 
+  } */
+
+  td{
+    border: 1px solid white; 
+  }
+ 
 .btns button {
     display: inline-block;
     height: 20px;

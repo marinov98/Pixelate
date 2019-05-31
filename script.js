@@ -1,24 +1,24 @@
 
-const addRow = () => {
-    let row = document.getElementById("addRow"); 
+function addRow() {
+    let row = document.getElementById("myRow"); 
     let rowCell = row.insertCell(0); 
     rowCell.innerHTML; 
 }
 
-const addCol = () => {
-    let col = document.getElementById("cols"); 
+function addCol() {
+    let col = document.getElementById("myRow"); 
     let colCell = col.insertCell(0); 
     colCell.innerHTML; 
 }
 
-const deleteRow = () => {
-    let delRow = document.getElementById("deleteRow"); 
-    let delRowCell = delRow.deleteRow(0); /*deleteRow is func*/ 
+function deleteRow() {
+    let delRow = document.getElementById("myRow"); 
+    let delRowCell = delRow.deleteCell(-1); /*deleteRow is func*/ 
     delRowCell.innerHTML; 
 }
 
-const deleteCol = () => {
-    let delCol = document.getElementById("deleteCol"); 
-    let delColCell = delCol.deleteCol(0); 
+function deleteCol() {
+    let delCol = document.getElementById("myRow"); 
+    let delColCell = delCol.deleteCell(-1); 
     delColCell.innerHTML; 
 }

@@ -8,12 +8,18 @@
 </head>
 
 <body>
-    <div class="top header">
+    <table> 
+        <tr id="myRow"> 
+        <td>First cell</td>
+        </tr>
+    </table>
+
+    <div class="top-header">
         <h1>Pixelate</h1>
         <div class="btns" id="rows">
             <span>Rows:</span>
-            <button class="plus">+</button>
-            <button class="minus">-</button>
+            <button onclick="addRow()" id="addRow">+</button>
+            <button onclick="deleteRow()" id="deleteRow">-</button>
         </div>
         <div class="btns" id="cols">
             <span>Columns:</span>
