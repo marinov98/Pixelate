@@ -1,53 +1,46 @@
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="script.js"></script>
 
     <title>Pixelate</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="top header">
-        <h1>Pixelate</h1>
-        <div class="btns" id="cols">
-            <span>Rows:</span>
-            <button class="plus"  id="addRow">+</button>
-            <button class="minus" id="deleteRow">-</button>
-        </div>
-        <div class="btns" id="row">
-            <span>Columns:</span>
-            <button class="plus" onclick="addRow()" id="addCol">+</button>
-            <button class="minus" onclick="deleteRow()" id="deleteCol">-</button>
-        </div>
-        <div class="color-select">
-            <span>Color:</span>
-            <select name="color">
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="grey">Grey</option>
-            </select>
-        </div>
-        <table class="header" align="center">
-            <tr id="myRow">
-                <td align="center">First cell</td>
-            </tr>
-        </table>
+      <h1>Pixelate</h1>
+      <div class="btns" id="cols">
+        <span>Rows:</span>
+        <button class="plus" onclick="appendRow()" id="addRow">+</button>
+        <button class="minus" onclick="removeRow()" id="deleteRow">-</button>
+      </div>
+      <div class="btns" id="row">
+        <span>Columns:</span>
+        <button class="plus" onclick="appendCol()" id="addCol">+</button>
+        <button class="minus" onclick="removeCol()" id="deleteCol">-</button>
+      </div>
+      <div class="color-select">
+        <span>Color:</span>
+        <select name="color" id="selector">
+          <option value="red" selected>Red</option>
+          <option value="orange">Orange</option>
+          <option value="blue">Blue</option>
+          <option value="purple">Purple</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="grey">Grey</option>
+        </select>
+      </div>
+      <table class="header" id="grid"></table>
     </div>
     <div class="bottom header">
-        <div class="fill">
-            <button>Fill All Cells</button>
-            <button>Fill Empty Cells</button>
-        </div>
-        <div class="clear">
-            <button>Clear Grid</button>
-        </div>
+      <div class="fill">
+        <button>Fill All Cells</button>
+        <button>Fill Empty Cells</button>
+      </div>
+      <div class="clear">
+        <button>Clear Grid</button>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
