@@ -107,3 +107,15 @@ const removeCol = () => {
   }
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
+
+/* Restructuring With addEventListener */
+
+window.onload = function() {
+  /* ROWS */
+  document.getElementById("addRow").addEventListener("click", appendRow);
+  document.getElementById("deleteRow").addEventListener("click", removeRow);
+
+  /* COLS */
+  document.getElementById("addCol").addEventListener("click", appendCol);
+  document.getElementById("deleteCol").addEventListener("click", removeCol);
+};
