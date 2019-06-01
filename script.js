@@ -101,8 +101,8 @@ const removeCol = () => {
     if (COLS === 0) {
       for (let i = 0; i < ROWS; i++) {
         document.getElementById("grid").deleteRow(0);
-        ROWS = 0;
       }
+      ROWS = 0;
     }
   }
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
