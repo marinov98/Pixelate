@@ -10,10 +10,6 @@ html {
   color: white;
 }
 
-/* #btns {
-    color: white; 
-    border: 1px solid white; 
-  } */
 
 td {
   border: 1px solid white;
@@ -26,15 +22,26 @@ td {
   width: 20px;
   border-radius: 50px;
   border: 1px black;
+  transition: background 0.3s;
+}
+
+.btns button:hover {
+  background-color: lightgray;
 }
 
 .plus {
   color: green;
+  background-color: white;
 }
+
+
 
 .minus {
   color: crimson;
+  background-color: white;
 }
+
+
 
 #rows {
   margin-left: 25px;
@@ -66,14 +73,9 @@ td {
 
 .fill button {
   height: 30px;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.5s, color 0.5s;
 }
 
-.fill button:link,
-.fill button:visited {
-  border: 1px aqua;
-  transition: 0.3s color;
-}
 
 .fill button:active,
 .fill button:hover {
@@ -83,16 +85,11 @@ td {
 
 .clear button {
   color: red;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.5s, color 0.5s;
   border: 1px red;
   width: 60px;
 }
 
-.clear button:link,
-.clear button:visited {
-  border: 1px red;
-  transition: color 0.3s;
-}
 
 .clear button:active,
 .clear button:hover {

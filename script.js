@@ -22,7 +22,6 @@ function deleteRow() {
   delRowCell.innerHTML;
 }
 
-/* MARIN EXPERIMENTATION */
 
 /* VARIABLES */
 
@@ -31,16 +30,21 @@ let COLS = 0;
 
 /* FUNCTIONS */
 
+//
+/// ROW METHODS
+//
+
 const appendRow = () => {
   console.log("INSERTION");
   let newRow = document.createElement("tr");
 
+  // edgecase where table is empty
   if (COLS === 0) {
     let newPixel = document.createElement("td");
     newPixel.style.backgroundColor = "white";
     newRow.appendChild(newPixel);
     COLS++;
-  } else {
+  } else { // general case
     for (let i = 0; i < COLS; i++) {
       let newPixel = document.createElement("td");
       newPixel.style.backgroundColor = "white";
@@ -48,6 +52,7 @@ const appendRow = () => {
     }
   }
 
+  // append fully filled row to the table
   let table = document.getElementById("grid");
   table.appendChild(newRow);
 
@@ -57,9 +62,11 @@ const appendRow = () => {
 
 const removeRow = () => {
   console.log("DELETION");
+  // delete only if necessary 
   if (ROWS > 0 && COLS > 0) {
     document.getElementById("grid").deleteRow(ROWS - 1);
     ROWS--;
+    // edgcase where table has no pixels as a result of deletion
     if (ROWS === 0) {
       COLS = 0;
     }
@@ -67,8 +74,13 @@ const removeRow = () => {
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
+///
+// COL METHODS
+///
+
 const appendCol = () => {
   console.log("INSERTION");
+  // edgecase when table is empty
   if (ROWS === 0) {
     let newRow = document.createElement("tr");
     let newCol = document.createElement("td");
@@ -76,7 +88,7 @@ const appendCol = () => {
     newRow.appendChild(newCol);
     document.getElementById("grid").appendChild(newRow);
     ROWS++;
-  } else {
+  } else { // general case
     for (let i = 0; i < ROWS; i++) {
       let currRow = document.getElementById("grid").rows[i];
       let newPixel = document.createElement("td");
@@ -91,6 +103,7 @@ const appendCol = () => {
 
 const removeCol = () => {
   console.log("DELETION");
+  // Ensure deletion even needs to happen
   if (COLS > 0 && ROWS > 0) {
     for (let i = 0; i < ROWS; i++) {
       let currRow = document.getElementById("grid").rows[i];
@@ -98,6 +111,7 @@ const removeCol = () => {
       currRow.removeChild(colToDelete);
     }
     COLS--;
+    // edgcase where table becomes empty as a result of deletion
     if (COLS === 0) {
       for (let i = 0; i < ROWS; i++) {
         document.getElementById("grid").deleteRow(0);
@@ -108,9 +122,33 @@ const removeCol = () => {
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
+
+/* BOTTOM BUTTONS */
+
+const clearGrid = () => {
+  console.log("Clear Grid");
+
+  // clear only when there are row and column pixels
+  if (ROWS > 0 && COLS > 0) {
+    for (let i = 0; i < ROWS; i++) {
+      // delete all rows
+      document.getElementById("grid").deleteRow(0);
+    }
+
+    // reset rows and columns
+    ROWS = 0;
+    COLS = 0;
+  }
+
+  console.log("ROWS: " + ROWS + " COLS: " + COLS);
+}
+
+
+
+
 /* Restructuring With addEventListener */
 
-window.onload = function() {
+window.onload = function () {
   /* ROWS */
   document.getElementById("addRow").addEventListener("click", appendRow);
   document.getElementById("deleteRow").addEventListener("click", removeRow);
@@ -118,4 +156,15 @@ window.onload = function() {
   /* COLS */
   document.getElementById("addCol").addEventListener("click", appendCol);
   document.getElementById("deleteCol").addEventListener("click", removeCol);
+
+  /*
+      BOTTOM BUTTONS: 
+  */
+
+  // FILL BUTTONS
+
+
+  // CLEAR BUTTON
+  document.getElementById("erase").addEventListener("click", clearGrid);
+
 };
