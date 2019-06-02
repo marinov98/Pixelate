@@ -26,6 +26,7 @@ td {
   width: 20px;
   border-radius: 50px;
   border: 1px black;
+  transition: none; 
 }
 
 .plus {
@@ -50,8 +51,8 @@ table {
 }
 
 td {
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
 }
 
 .header {
@@ -98,4 +99,8 @@ td {
 .clear button:hover {
   background-color: red;
   color: white;
+}
+
+.selector {
+    user-select: none;
 }

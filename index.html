@@ -21,8 +21,8 @@
       </div>
       <div class="color-select">
         <span>Color:</span>
-        <select name="color" id="selector">
-          <option value="red" selected>Red</option>
+        <select name="color" id="selector" onclick="setColor()">
+          <option value="red">Red</option>
           <option value="orange">Orange</option>
           <option value="blue">Blue</option>
           <option value="purple">Purple</option>
@@ -35,8 +35,8 @@
     </div>
     <div class="bottom header">
       <div class="fill">
-        <button>Fill All Cells</button>
-        <button>Fill Empty Cells</button>
+        <button id="fillAll" onclick="fillAllPixels()">Fill All Cells</button>
+        <button id="fillAll" onclick="fillEmptyPixels()">Fill Empty Cells</button>
       </div>
       <div class="clear">
         <button>Clear Grid</button>

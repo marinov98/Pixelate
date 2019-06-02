@@ -29,7 +29,14 @@ function deleteRow() {
 let ROWS = 0;
 let COLS = 0;
 
+
+/* variables for color changes */ 
+const selectColor = document.getElementById('selector');
+let color = 'red'; 
+let mouseDown = 0; 
+
 /* FUNCTIONS */
+
 
 const appendRow = () => {
   console.log("INSERTION");
@@ -45,15 +52,31 @@ const appendRow = () => {
       let newPixel = document.createElement("td");
       newPixel.style.backgroundColor = "white";
       newRow.appendChild(newPixel);
+
+      // events for color change on click
+      newPixel.addEventListener('mousedown', function(event) {
+        this.style.backgroundColor = color;
+      });
+  
+      newPixel.addEventListener('mouseover', function(event) {
+        if (mouseDown)
+          this.style.backgroundColor = color;
+      });
     }
   }
 
   let table = document.getElementById("grid");
   table.appendChild(newRow);
 
+
   ROWS++;
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
+
+  //selectedIndex passed from select tag 
+  color = selectorColor.options[selectorColor.selectedIndex].value;
+  
 };
+
 
 const removeRow = () => {
   console.log("DELETION");
@@ -66,6 +89,8 @@ const removeRow = () => {
   }
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
+
+
 
 const appendCol = () => {
   console.log("INSERTION");
@@ -82,11 +107,23 @@ const appendCol = () => {
       let newPixel = document.createElement("td");
       newPixel.style.backgroundColor = "white";
       currRow.appendChild(newPixel);
+
+    // events for color change on click
+    newPixel.addEventListener('mousedown', function(event) {
+      this.style.backgroundColor = color;
+    });
+
+    newPixel.addEventListener('mouseover', function(event) {
+      if (mouseDown)
+        this.style.backgroundColor = color;
+    });
+
     }
   }
 
   COLS++;
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
+  color = selectorColor.options[selectorColor.selectedIndex].value;
 };
 
 const removeCol = () => {
@@ -94,7 +131,7 @@ const removeCol = () => {
   if (COLS > 0 && ROWS > 0) {
     for (let i = 0; i < ROWS; i++) {
       let currRow = document.getElementById("grid").rows[i];
-      let colToDelete = currRow.lastChild;
+      let colToDelete = currRow.firstChild;
       currRow.removeChild(colToDelete);
     }
     COLS--;
@@ -119,3 +156,35 @@ window.onload = function() {
   document.getElementById("addCol").addEventListener("click", appendCol);
   document.getElementById("deleteCol").addEventListener("click", removeCol);
 };
+
+
+function fillAllPixels() {
+    for (let i = 0; i < ROWS; i++) {
+      for (let j = 0; j < COLS; j++) {
+        let currPixel = grid.rows[i].cells[j];
+        let pixelColor = currPixel.style.backgroundColor;
+        currPixel.style.backgroundColor = color;
+      }
+    }
+  }
+
+  
+  function fillEmptyPixels() {
+    for (let i = 0; i < ROWS; i++) {
+      for (let j = 0; j < COLS; j++) {
+        let currPixel = grid.rows[i].cells[j];
+        let pixelColor = currPixel.style.backgroundColor;
+        //if pixel is white then change to color 
+        if (pixelColor == "white"){
+            currPixel.style.backgroundColor = color;
+        }
+      }
+    }
+  }
+ 
+  /*changing the color based on selector*/ 
+  setColor = function(value) {
+    let setColor = document.getElementById("selector");
+    color= setColor.options[setColor.selectedIndex].value;
+  }
+  
