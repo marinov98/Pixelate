@@ -30,9 +30,9 @@ let COLS = 0;
 
 
 /* variables for color changes */ 
-const selectColor = document.getElementById('selector');
+const selectorColor = document.getElementById('selector');
 let color = 'red'; 
-let mouseDown = 0; 
+let trigger = false;  
 
 /* FUNCTIONS */
 
@@ -57,13 +57,15 @@ const appendRow = () => {
       newRow.appendChild(newPixel);
 
       // events for color change on click
-      newPixel.addEventListener('mousedown', function(event) {
+      newPixel.addEventListener('mousedown', function(e) {
         this.style.backgroundColor = color;
       });
   
-      newPixel.addEventListener('mouseover', function(event) {
-        if (mouseDown)
+      newPixel.addEventListener('mouseover', function(e) {
+        //e.preventDefault();
+        if (trigger == true){
           this.style.backgroundColor = color;
+        }
       });
     }
   }
@@ -118,13 +120,15 @@ const appendCol = () => {
       currRow.appendChild(newPixel);
 
     // events for color change on click
-    newPixel.addEventListener('mousedown', function(event) {
+    newPixel.addEventListener('mousedown', function(e) {
       this.style.backgroundColor = color;
     });
 
-    newPixel.addEventListener('mouseover', function(event) {
-      if (mouseDown)
-        this.style.backgroundColor = color;
+    newPixel.addEventListener('mouseover', function(e) {
+       // e.preventDefault();
+        if (trigger == false){
+          this.style.backgroundColor = color;
+        }
     });
 
     }
@@ -132,6 +136,8 @@ const appendCol = () => {
 
   COLS++;
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
+
+  //color changes from selector drop down 
   color = selectorColor.options[selectorColor.selectedIndex].value;
 };
 
@@ -234,3 +240,13 @@ window.onload = function () {
   document.getElementById("erase").addEventListener("click", clearGrid);
 
 //};
+
+document.addEventListener('mousedown', function(){
+  trigger = true;
+});
+
+document.addEventListener('mouseup', function(){
+  trigger = false;
+});
+
+//https://stackoverflow.com/questions/48593312/javascript-event-when-mouseover-and-mousedown
