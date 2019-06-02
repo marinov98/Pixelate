@@ -22,15 +22,11 @@ td {
   width: 20px;
   border-radius: 50px;
   border: 1px black;
-<<<<<<< HEAD
-  transition: none; 
-=======
   transition: background 0.3s;
 }
 
 .btns button:hover {
   background-color: lightgray;
->>>>>>> 900de921bd4461912203d8348f711218b7a83a03
 }
 
 .plus {
@@ -99,11 +95,4 @@ td {
 .clear button:hover {
   background-color: red;
   color: white;
-<<<<<<< HEAD
-}
-
-.selector {
-    user-select: none;
-=======
->>>>>>> 900de921bd4461912203d8348f711218b7a83a03
 }
