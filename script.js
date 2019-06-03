@@ -15,7 +15,6 @@ let trigger = false;
 //
 
 const appendRow = () => {
-  console.log("INSERTION");
   let newRow = document.createElement("tr");
 
   // edgecase where table is empty
@@ -23,6 +22,19 @@ const appendRow = () => {
     let newPixel = document.createElement("td");
     newPixel.style.backgroundColor = "white";
     newRow.appendChild(newPixel);
+
+    // events for color change on click
+    newPixel.addEventListener("mousedown", function(e) {
+      this.style.backgroundColor = color;
+    });
+
+    newPixel.addEventListener("mouseover", function(e) {
+      //e.preventDefault();
+      if (trigger === true) {
+        this.style.backgroundColor = color;
+      }
+    });
+
     COLS++;
   } else {
     // general case
@@ -50,7 +62,6 @@ const appendRow = () => {
   table.appendChild(newRow);
 
   ROWS++;
-  console.log("ROWS: " + ROWS + " COLS: " + COLS);
 
   //selectedIndex passed from select tag
   const currColor = document.getElementById("selector");
@@ -68,7 +79,6 @@ const removeRow = () => {
       COLS = 0;
     }
   }
-  console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
 ///
@@ -76,14 +86,25 @@ const removeRow = () => {
 ///
 
 const appendCol = () => {
-  console.log("INSERTION");
   // edgecase when table is empty
   if (ROWS === 0) {
     let newRow = document.createElement("tr");
-    let newCol = document.createElement("td");
-    newCol.style.backgroundColor = "white";
-    newRow.appendChild(newCol);
+    let newPixel = document.createElement("td");
+    newPixel.style.backgroundColor = "white";
+    newRow.appendChild(newPixel);
     document.getElementById("grid").appendChild(newRow);
+
+    newPixel.addEventListener("mousedown", function(e) {
+      this.style.background = color;
+    });
+
+    newPixel.addEventListener("mouseover", function(e) {
+      // e.preventDefault();
+      if (trigger === true) {
+        this.style.backgroundColor = color;
+      }
+    });
+
     ROWS++;
   } else {
     // general case
@@ -100,7 +121,7 @@ const appendCol = () => {
 
       newPixel.addEventListener("mouseover", function(e) {
         // e.preventDefault();
-        if (trigger === false) {
+        if (trigger === true) {
           this.style.backgroundColor = color;
         }
       });
@@ -108,7 +129,6 @@ const appendCol = () => {
   }
 
   COLS++;
-  console.log("ROWS: " + ROWS + " COLS: " + COLS);
 
   // color changes from selector drop down
   const currColor = document.getElementById("selector");
@@ -116,7 +136,6 @@ const appendCol = () => {
 };
 
 const removeCol = () => {
-  console.log("DELETION");
   // Ensure deletion even needs to happen
   if (COLS > 0 && ROWS > 0) {
     for (let i = 0; i < ROWS; i++) {
@@ -133,7 +152,6 @@ const removeCol = () => {
       ROWS = 0;
     }
   }
-  console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
 /* BOTTOM BUTTONS */
@@ -171,15 +189,12 @@ function fillEmpty() {
 // CLEAR BUTTOM
 
 const clearGrid = () => {
-  console.log("Clear Grid");
-
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
       let currPixel = grid.rows[i].cells[j];
       currPixel.style.backgroundColor = "white";
     }
   }
-  console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
 /* Restructuring With addEventListener */
