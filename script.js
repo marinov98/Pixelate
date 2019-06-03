@@ -39,7 +39,7 @@ const appendRow = () => {
 
       newPixel.addEventListener("mouseover", function(e) {
         //e.preventDefault();
-        if (trigger == true) {
+        if (trigger === true) {
           this.style.backgroundColor = color;
         }
       });
@@ -100,7 +100,7 @@ const appendCol = () => {
 
       newPixel.addEventListener("mouseover", function(e) {
         // e.preventDefault();
-        if (trigger == false) {
+        if (trigger === false) {
           this.style.backgroundColor = color;
         }
       });
@@ -144,7 +144,7 @@ const setColor = value => {
 
 // FILLBUTTONS
 
-function fillAllPixels() {
+function fillAll() {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
       let currPixel = grid.rows[i].cells[j];
@@ -154,7 +154,7 @@ function fillAllPixels() {
   }
 }
 
-function fillEmptyPixels() {
+function fillEmpty() {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
       let currPixel = grid.rows[i].cells[j];
@@ -201,13 +201,17 @@ window.onload = function() {
   /*
       BOTTOM BUTTONS: 
   */
-  document.getElementById("fillAll").addEventListener("click", fillAllPixels);
-  document.getElementById("fillAll").addEventListener("click", fillEmptyPixels);
+
+  // FILL BUTTONS
+  document.getElementById("fillAll").addEventListener("click", fillAll);
+  document.getElementById("fillEmpty").addEventListener("click", fillEmpty);
 
   // CLEAR BUTTON
   document.getElementById("erase").addEventListener("click", clearGrid);
 
   // TRIGGERS
+  document.getElementById("selector").addEventListener("click", setColor);
+
   document.addEventListener("mousedown", function() {
     trigger = true;
   });
