@@ -173,18 +173,12 @@ function fillEmpty() {
 const clearGrid = () => {
   console.log("Clear Grid");
 
-  // clear only when there are row and column pixels
-  if (ROWS > 0 && COLS > 0) {
-    for (let i = 0; i < ROWS; i++) {
-      // delete all rows
-      document.getElementById("grid").deleteRow(0);
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
+      let currPixel = grid.rows[i].cells[j];
+      currPixel.style.backgroundColor = "white";
     }
-
-    // reset rows and columns
-    ROWS = 0;
-    COLS = 0;
   }
-
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 };
 
