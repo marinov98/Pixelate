@@ -5,7 +5,6 @@ let COLS = 0;
 
 /* variables for color changes */
 
-const selectorColor = document.getElementById("selector");
 let color = "red";
 let trigger = false;
 
@@ -54,7 +53,8 @@ const appendRow = () => {
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 
   //selectedIndex passed from select tag
-  color = selectorColor.options[selectorColor.selectedIndex].value;
+  const currColor = document.getElementById("selector");
+  color = currColor.options[currColor.selectedIndex].value;
 };
 
 const removeRow = () => {
@@ -111,7 +111,8 @@ const appendCol = () => {
   console.log("ROWS: " + ROWS + " COLS: " + COLS);
 
   // color changes from selector drop down
-  color = selectorColor.options[selectorColor.selectedIndex].value;
+  const currColor = document.getElementById("selector");
+  color = currColor.options[currColor.selectedIndex].value;
 };
 
 const removeCol = () => {
