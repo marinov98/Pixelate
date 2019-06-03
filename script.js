@@ -99,7 +99,6 @@ const appendCol = () => {
     });
 
     newPixel.addEventListener("mouseover", function(e) {
-      // e.preventDefault();
       if (trigger === true) {
         this.style.backgroundColor = color;
       }
@@ -147,6 +146,7 @@ const removeCol = () => {
     // edgcase where table becomes empty as a result of deletion
     if (COLS === 0) {
       for (let i = 0; i < ROWS; i++) {
+        // delete any remaining rows and update the global variable
         document.getElementById("grid").deleteRow(0);
       }
       ROWS = 0;
@@ -161,36 +161,46 @@ const setColor = value => {
   color = setColor.options[setColor.selectedIndex].value;
 };
 
-// FILLBUTTONS
+// Triggers: used to properly implement coloring mouseover functionality
 
-function fillAll() {
+const toggle = () => {
+  trigger = true;
+};
+
+const unToggle = () => {
+  trigger = false;
+};
+
+// FILL BUTTONS
+
+const fillAll = () => {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
       let currPixel = grid.rows[i].cells[j];
-      let pixelColor = currPixel.style.backgroundColor;
       currPixel.style.backgroundColor = color;
     }
   }
-}
+};
 
-function fillEmpty() {
+const fillEmpty = () => {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
       let currPixel = grid.rows[i].cells[j];
       let pixelColor = currPixel.style.backgroundColor;
-      //if pixel is white then change to color
+      // if pixel is white then change to color
       if (pixelColor === "white") {
         currPixel.style.backgroundColor = color;
       }
     }
   }
-}
+};
 
 // CLEAR BUTTOM
 
 const clearGrid = () => {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
+      // make every cell white which our project's case means empty
       let currPixel = grid.rows[i].cells[j];
       currPixel.style.backgroundColor = "white";
     }
@@ -200,6 +210,10 @@ const clearGrid = () => {
 /* Restructuring With addEventListener */
 
 window.onload = function() {
+  /*
+      TOP BUTTONS:
+  */
+
   /* ROWS */
   document.getElementById("addRow").addEventListener("click", appendRow);
   document.getElementById("deleteRow").addEventListener("click", removeRow);
@@ -222,13 +236,6 @@ window.onload = function() {
   // TRIGGERS
   document.getElementById("selector").addEventListener("click", setColor);
 
-  document.addEventListener("mousedown", function() {
-    trigger = true;
-  });
-
-  document.addEventListener("mouseup", function() {
-    trigger = false;
-  });
+  document.addEventListener("mousedown", toggle);
+  document.addEventListener("mouseup", unToggle);
 };
-
-//https://stackoverflow.com/questions/48593312/javascript-event-when-mouseover-and-mousedown
